@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from 'axios'
+function App(){
+  const submit =(e)=>{
+    e.preventDefault();
+    var formdata = new FormData();
+    formdata.append("full", e.target.value);
+    formdata.append("short", 1);
+    var config = {
+      method: "post",
+      url: "/api/short/addurl" + this.props.user._id,
+      headers: { "Content-Type": "multipart/form-data" },
 
-function App() {
+      data: formdata,
+  };
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>  
+        <form onClick={submit}>
+      <label>url</label>
+      <input></input>
+      <input type="submit" ></input>
+    </form>
     </div>
-  );
-}
 
+)
+  
+}
 export default App;
